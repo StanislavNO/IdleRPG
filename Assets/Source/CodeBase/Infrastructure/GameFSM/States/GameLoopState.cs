@@ -2,6 +2,15 @@
 {
     public abstract class GameLoopState : IState
     {
+        private readonly IReadOnlyContainer _sceneContainer;
+
+        protected GameLoopState(IReadOnlyContainer sceneContainer)
+        {
+            _sceneContainer = sceneContainer;
+        }
+
+        protected IReadOnlyContainer Data => _sceneContainer;
+
         public virtual void Enter()
         {
         }

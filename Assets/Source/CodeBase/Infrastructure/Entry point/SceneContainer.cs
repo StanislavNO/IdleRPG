@@ -9,9 +9,15 @@ namespace Assets.Source.CodeBase
 {
     public class SceneContainer : MonoBehaviour
     {
+
+        [SerializeField] private View _view;
+
+        [field: SerializeField] public HeroConfig HeroConfig { get; private set; }
+        public Mediator View {  get; private set; }
+
         private void Awake()
         {
-            Debug.Log("ContainerAwake");
+            View = new();
         }
     }
 }

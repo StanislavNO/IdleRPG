@@ -20,7 +20,8 @@ namespace Assets.Source.CodeBase
             List<IState> states = new List<IState>()
             {
                 new SceneLoaderState(_sceneSwitcher, _stateSwitcher),
-                new InitializationState(_stateSwitcher)
+                new InitializationState(_stateSwitcher, _container),
+                new StartGameState(_container)
             };
 
             return states;

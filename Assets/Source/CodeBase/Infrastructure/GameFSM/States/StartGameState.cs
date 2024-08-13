@@ -2,19 +2,9 @@
 {
     public class StartGameState : GameLoopState
     {
-        public void Enter()
+        public StartGameState(IReadOnlyContainer sceneContainer) : base(sceneContainer)
         {
-            throw new System.NotImplementedException();
-        }
 
-        public void Exit()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Update()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

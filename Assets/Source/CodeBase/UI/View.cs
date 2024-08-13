@@ -1,6 +1,8 @@
-﻿namespace Assets.Source.CodeBase
+﻿using UnityEngine;
+
+namespace Assets.Source.CodeBase
 {
-    internal class View
+    public class View : MonoBehaviour
     {
     }
 }

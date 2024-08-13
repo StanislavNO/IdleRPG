@@ -17,4 +17,4 @@ MonoBehaviour:
   <Weapon>k__BackingField:
     _damage: 1
     _magicDamage: 5
-    _attackDelay: 0
+    _attackDelay: 2.5

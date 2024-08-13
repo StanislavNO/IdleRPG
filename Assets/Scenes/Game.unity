@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b95f7b630c97a46ae72b40057ab09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _view: {fileID: 0}
+  <HeroConfig>k__BackingField: {fileID: 11400000, guid: b49990fc4caa4c84a955f29d5ca20665, type: 2}
 --- !u!4 &566148004
 Transform:
   m_ObjectHideFlags: 0

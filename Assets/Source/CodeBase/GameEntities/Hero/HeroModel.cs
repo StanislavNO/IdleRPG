@@ -1,17 +1,20 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Assets.Source.CodeBase
 {
-    public class HeroModel
+    public class HeroModel : IHealth
     {
-        private float _armor;
+        private readonly float _armor;
+        private int _maxHealth = 100;
 
-        public HeroModel(int health, float armor)
+        public HeroModel(int startHealth, float armor)
         {
             _armor = armor;
+            _maxHealth = startHealth;
         }
 
-        public int Health { get; private set; }
+        public int HealthPoint { get; private set; }
 
         public void TakeDamage(int value)
         {
@@ -20,10 +23,21 @@ namespace Assets.Source.CodeBase
 
             int damage = HandleDamage(value);
 
-            if (Health - damage < 0)
-                Health = 0;
+            if (HealthPoint - damage < 0)
+                HealthPoint = 0;
             else
-                Health -= damage;
+                HealthPoint -= damage;
+        }
+
+        public void AddHealth(int value)
+        {
+            if (value < 0)
+                throw new ArgumentOutOfRangeException(nameof(value));
+
+            if(HealthPoint + value > _maxHealth)
+                HealthPoint = _maxHealth;
+            else
+                HealthPoint += value;
         }
 
         private int HandleDamage(int value)

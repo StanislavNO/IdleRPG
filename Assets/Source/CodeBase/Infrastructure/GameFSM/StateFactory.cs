@@ -6,9 +6,9 @@ namespace Assets.Source.CodeBase
     {
         private readonly IStateSwitcher _stateSwitcher;
         private readonly SceneSwitcher _sceneSwitcher;
-        private readonly IContainer _container;
+        private readonly IProjectContainer _container;
 
-        public StateFactory(SceneSwitcher sceneSwitcher, IStateSwitcher stateSwitcher, IContainer container)
+        public StateFactory(SceneSwitcher sceneSwitcher, IStateSwitcher stateSwitcher, IProjectContainer container)
         {
             _sceneSwitcher = sceneSwitcher;
             _stateSwitcher = stateSwitcher;

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Assets.Source.CodeBase
 {
-    public class StateTimer
+    public class IdleState : GameLoopState
     {
-        public StateTimer()
+        public IdleState(IReadOnlyContainer sceneContainer) : base(sceneContainer)
         {
-            
+
         }
     }
 }

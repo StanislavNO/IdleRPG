@@ -8,9 +8,11 @@ namespace Assets.Source.CodeBase
         private readonly IStateSwitcher _stateSwitcher;
 
         private SceneContainer _sceneContainer;
-        private IContainer _container;
+        private IProjectContainer _container;
 
-        public InitializationState(IStateSwitcher stateSwitcher, IContainer container)
+
+
+        public InitializationState(IStateSwitcher stateSwitcher, IProjectContainer container)
         {
             _stateSwitcher = stateSwitcher;
             _container = container;
@@ -19,7 +21,9 @@ namespace Assets.Source.CodeBase
         public void Enter()
         {
             FindSceneContainer();
+            InitProjectContainer();
             InitSceneContainer();
+
             _stateSwitcher.SwitchState<StartGameState>();
         }
 
@@ -27,7 +31,12 @@ namespace Assets.Source.CodeBase
 
         public void Update() { }
 
-        private void InitSceneContainer() =>
+        private void InitSceneContainer()
+        {
+            
+        }
+
+        private void InitProjectContainer() =>
             _container.InitContainer(_sceneContainer);
 
         private void FindSceneContainer()

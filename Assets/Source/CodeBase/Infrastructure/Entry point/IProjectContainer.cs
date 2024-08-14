@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Source.CodeBase
 {
-    public interface IContainer : IReadOnlyContainer
+    public interface IProjectContainer : IReadOnlyContainer
     {
         public void InitContainer(SceneContainer container);
     }

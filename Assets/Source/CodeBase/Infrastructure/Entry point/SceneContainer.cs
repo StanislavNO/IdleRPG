@@ -7,18 +7,29 @@ using UnityEngine;
 
 namespace Assets.Source.CodeBase
 {
-    public class SceneContainer : MonoBehaviour
+    public class SceneContainer : MonoBehaviour , IDispose
     {
         [SerializeField] private View _view;
 
         private HeroModel _hero;
 
-        [field: SerializeField] public HeroConfig HeroConfig { get; private set; }
-        public Mediator View {  get; private set; }
-
-        private void Awake()
+        public void Init(Mediator mediator, HeroModel hero)
         {
-            View = new();
+            View = mediator;
+            _hero = hero;
         }
+
+        private void OnDisable()
+        {
+            Disposed?.Invoke();
+        }
+
+        public event Action Disposed;
+
+
+        [field: SerializeField]
+        public HeroConfig HeroConfig { get; private set; }
+
+        public Mediator View { get; private set; }
     }
 }

@@ -21,7 +21,7 @@ namespace Assets.Source.CodeBase
             {
                 new SceneLoaderState(_sceneSwitcher, _stateSwitcher),
                 new InitializationState(_stateSwitcher, _container),
-                new StartGameState(_container)
+                new StartGameState(_stateSwitcher,_container)
             };
 
             return states;

@@ -1,31 +1,41 @@
-﻿namespace Assets.Source.CodeBase
+﻿using System;
+using Unity.VisualScripting;
+
+namespace Assets.Source.CodeBase
 {
     public abstract class GameLoopState : IState
     {
-        private readonly IReadOnlyContainer _sceneContainer;
+        private readonly IReadOnlyContainer _container;
 
         private Timer _timer;
+        private IReadOnlyContainer sceneContainer;
+        private GameLoopState _memoryState;
 
-        protected GameLoopState(IReadOnlyContainer sceneContainer)
+        protected GameLoopState(IStateSwitcher stateSwitcher, IReadOnlyContainer sceneContainer)
         {
-            _sceneContainer = sceneContainer;
+            StateSwitcher = stateSwitcher;
+            _container = sceneContainer;
         }
 
-        protected IReadOnlyContainer Data => _sceneContainer;
+        protected IStateSwitcher StateSwitcher { get; private set; }
+        protected IReadOnlyContainer Data => _container;
+        protected Mediator View => _container.SceneContainer.View;
 
-        public virtual void Enter() 
+        public virtual void Enter()
         {
-            SetTimer();
         }
 
-        public virtual void Exit() { }
+        public virtual void Exit()
+        {
+            _memoryState = this;
+        }
 
         public virtual void Update()
         {
-            _timer.Tick();
-            _sceneContainer.SceneContainer.View.ChangeTime(_timer.Time);
         }
 
-        protected abstract void SetTimer();
+        protected void GoBackState() => _memoryState.Visit();
+
+        protected abstract void Visit();
     }
 }
